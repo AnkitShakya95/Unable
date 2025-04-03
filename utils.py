@@ -4,6 +4,11 @@ import math
 import os
 from pyrogram.errors import FloodWait
 
+async def show_random_emojis(message):
+    emojis = ['🥰', '😇', '💯', '⚡️', '🚀', '🌟', '🔥', '✨']
+    emoji_message = await message.reply_text(' '.join(random.choices(emojis, k=1)))
+    return emoji_message
+
 class Timer:
     def __init__(self, time_between=5):
         self.start_time = time.time()
@@ -91,8 +96,8 @@ async def progress_bar(current, total, reply, start):
             remaining_length = bar_length - completed_length
 
             symbol_pairs = [
-                ("▬", "▭"),
-                ("▰", "▱")
+                ("❀", "✾"),
+                ("❀", "✾")
             ]
             chosen_pair = random.choice(symbol_pairs)
             completed_symbol, remaining_symbol = chosen_pair
@@ -100,6 +105,8 @@ async def progress_bar(current, total, reply, start):
             progress_bar = completed_symbol * completed_length + remaining_symbol * remaining_length
             
             try:
-                await reply.edit(f'`╭──⌯════𝐁𝐨𝐭 𝐒𝐭𝐚𝐭𝐢𝐜𝐬═════⌯──╮\n├⚡ {progress_bar}\n├⚙️ Progress ➤ | {perc} |\n├🚀 Speed ➤ | {sp} |\n├📟 Processed ➤ | {cur} |\n├🧲 Size ➤ | {tot} |\n├🕑 ETA ➤ | {eta} |\n╰─══✨🦋 RAO SAHAB ✅ 🦋✨══─╯`') 
+                emoji_message = await show_random_emojis(message)
+                await reply.edit(f'**╭──⌈📤 𝙐𝙥𝙡𝙤𝙖𝙙𝙞𝙣𝙜 📤⌋──╮ \n┣⪼ [ {progress_bar} ]\n┣⪼ 🚀 𝙎𝙥𝙚𝙚𝙙 : {sp} \n┣⪼ 📈 𝙋𝙧𝙤𝙜𝙧𝙚𝙨𝙨 : {perc} \n┣⪼ ⏳ 𝙇𝙤𝙖𝙙𝙚𝙙 : {cur}\n┣⪼ 🍁 𝙎𝙞𝙯𝙚 :  {tot} \n┣⪼ 🕛 𝙀𝙏𝘼 : {eta} \n╰────⌈ **𝐀𝐍𝐊𝐈𝐓🖤** ⌋────╯**\n\n       𝐖𝐄𝐋𝐂𝐎𝐌𝐄❤️       \n\n       Hᴀᴘᴘʏ Lᴇᴀʀɴɪɢ       \n\n       {emoji_message}       ') 
+
             except FloodWait as e:
                 time.sleep(e.x)
