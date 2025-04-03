@@ -35,7 +35,7 @@ async def show_random_emojis(message):
     emoji_message = await message.reply_text(' '.join(random.choices(emojis, k=1)))
     return emoji_message
     
-credit ="𝙎𝘼𝙄𝙉𝙄 𝘽𝙊𝙏𝙎" 
+my_name ="𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳" 
 # Initialize the bot
 bot = Client(
     "bot",
@@ -115,8 +115,8 @@ import random
 keyboard = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text="📞 Contact", url="https://t.me/Oye_brijesh"),
-            InlineKeyboardButton(text="🛠️ Help", url="https://t.me/+qutXY5xbN0I4OWY1"),
+            InlineKeyboardButton(text="📞 Contact", url="https://t.me/AnkitShakya"),
+            InlineKeyboardButton(text="🛠️ Help", url="https://t.me/AnkitShakya"),
         ],
     ]
 )
@@ -125,8 +125,8 @@ keyboard = InlineKeyboardMarkup(
 Busy = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text="📞 Contact", url="https://t.me/Oye_brijesh"),
-            InlineKeyboardButton(text="🛠️ Help", url="https://t.me/+qutXY5xbN0I4OWY1"),
+            InlineKeyboardButton(text="📞 Contact", url="https://t.me/AnkitShakya"),
+            InlineKeyboardButton(text="🛠️ Help", url="https://t.me/AnkitShakya"),
         ],
     ]
 )
@@ -139,47 +139,6 @@ image_urls = [
 ]
 
 cookies_file_path= "youtube_cookies.txt"
-
-
-@bot.on_message(filters.command(["drm"]))
-async def help_handler(client: Client, m: Message):
-    await bot.send_message(m.chat.id, text= (
-        "<pre><code> 🎉 Welcome to DRM Bot! 🎉</code></pre>\n\n"
-        "You can have access to download all Non-DRM+AES Encrypted URLs 🔐 including:\n\n"
-        "Send /help for free users.\n\n"
-        "<pre><code>• 📚 Appx Zip+Encrypted Url\n"
-        "• 🎓 Classplus DRM+ NDRM\n"
-        "• 🧑‍🏫 PhysicsWallah DRM\n"
-        "• 📚 CareerWill + PDF\n"
-        "• 🎓 Khan GS\n"
-        "• 🎓 Study Iq DRM\n"
-        "• 🚀 APPX + APPX Enc PDF\n"
-        "• 🎓 Vimeo Protection\n"
-        "• 🎓 Brightcove Protection\n"
-        "• 🎓 Visionias Protection\n"
-        "• 🎓 Zoom Video\n"
-        "• 🎓 Utkarsh Protection(Video + PDF)\n"
-        "• 🎓 All Non DRM+AES Encrypted URLs\n"
-        "• 🎓 MPD URLs if the key is known (e.g., Mpd_url?key=key XX:XX)</code></pre>\n\n"
-        "🚀 You are not subscribed to any plan yet!\n\n"
-        "<pre><code>Contact to 𝙎𝘼𝙄𝙉𝙄 𝘽𝙊𝙏𝙎 for buy membership.</code></pre>"
-    ))
-
-@bot.on_message(filters.command(["help"]))
-async def txt_handler(client: Client, m: Message):
-    await bot.send_message(m.chat.id, text= (
-        "<pre><code> 🎉Congrats! You are using MR BRIJESH:</code></pre>\n┣\n"
-        "┣⪼01. Send /start - To Check Bot \n┣\n"
-        "┣⪼02. Send /brijesh - for extract txt file\n┣\n"
-        "┣⪼03. Send /y2t - YouTube to .txt Convert\n┣\n"
-        "┣⪼04. Send /logs - To see Bot Working Logs\n┣\n"
-        "┣⪼05. Send /cookies - To update YT cookies.\n┣\n"
-        "┣⪼06. Send /stop - Stop the Running Task. 🚫\n┣\n"
-        "┣⪼🔗  Direct Send Link For Extract (with https://)\n┣\n"
-        "<pre><code>If you have any questions, feel free to ask! 💬</code></pre>"
-        )
-    ) 
-
 
 @bot.on_message(filters.command("cookies") & filters.private)
 async def cookies_handler(client: Client, m: Message):
@@ -217,29 +176,12 @@ async def cookies_handler(client: Client, m: Message):
         
 # Start command handler
 @bot.on_message(filters.command(["start"]))
-async def start_command(bot: Client, message: Message):
-    # Send a loading message
-    loading_message = await bot.send_message(
-        chat_id=message.chat.id,
-        text="Loading... ⏳🔄"
-    )
-  
-    # Choose a random image URL
-    random_image_url = random.choice(image_urls)
-    
-    # Caption for the image
-    caption = (
-        "<pre><code>🌟 Welcome Boss😸! 🌟</code></pre>\n\n"
-        "𝐇𝐞𝐥𝐥𝐨 𝐃𝐞𝐚𝐫 👋!\n\n➠ 𝐈 𝐚𝐦 𝐚 𝐓𝐞𝐱𝐭 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐖𝐢𝐭𝐡 ♥️\n\n\➠ Can Extract Videos & PDFs From Your Text File and Upload to Telegram!
-➠ For Guide Use Command /help 📖
-
-\n\n➠ Use /drm Command to Download From TXT File 📄.\n\n<pre><code>➠ 𝐌𝐚𝐝𝐞 𝐁𝐲:@RAO_SAHAB_JI_BOT 😜</code></pre"
-    )
-      
-    await asyncio.sleep(1)
-    await loading_message.edit_text(
-        "Initializing Uploader bot... 🤖\n\n"
-        "Progress: ⬜⬜⬜⬜⬜⬜⬜⬜⬜ 0%\n\n"
+async def start(client: Client, msg: Message):
+    user = await client.get_me()
+    mention = user.mention
+    start_message = await client.send_message(
+        msg.chat.id,
+        Data.START.format(msg.from_user.mention)
     )
 
     await asyncio.sleep(1)
@@ -262,21 +204,10 @@ async def start_command(bot: Client, message: Message):
 
     await asyncio.sleep(1)
     await loading_message.edit_text(
-        "Checking status Ok... \n**ᴊᴏɪɴ ᴏᴜʀ <a href='https://t.me/+1e-r94cF6yE3NzA1'>ᴛᴇʟᴇɢʀᴀᴍ Group</a>**\n\n"
+        "Checking status Ok... \n**ᴊᴏɪɴ ᴏᴜʀ <a href='https://t.me/AnkitShakya'>Bot Owner</a>**\n\n"
         "Progress:🟩🟩🟩🟩🟩🟩🟩🟩🟩 100%\n\n"
     )
         
-    # Send the image with caption and buttons
-    await bot.send_photo(
-        chat_id=message.chat.id,
-        photo=random_image_url,
-        caption=caption,
-        reply_markup=keyboard
-    )
-
-    # Delete the loading message
-    await loading_message.delete()
-    
 
 @bot.on_message(filters.command(["logs"]) )
 async def send_logs(bot: Client, m: Message):
@@ -372,7 +303,7 @@ async def youtube_to_txt(client, message: Message):
     # Remove the temporary text file after sending
     os.remove(txt_file)
 
-@bot.on_message(filters.command(["brijesh"]) )
+@bot.on_message(filters.command(["alone"]) )
 async def txt_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"<pre><code>**🔹Hi I am Poweful TXT Downloader📥 Bot.**</code></pre>\n<pre><code>🔹**Send me the TXT file and wait.**</code></pre>")
     input: Message = await bot.listen(editable.chat.id)
@@ -433,20 +364,15 @@ async def txt_handler(bot: Client, m: Message):
     except Exception:
             res = "UN"
 
-    await editable.edit("<pre><code>**Enter Your Name**</code></pre>\n<pre><code>Send `1` for use default</code></pre>")
+    await editable.edit("<pre><code>**Enter Your Name**</code></pre>\n<pre><code>Send `de` for use default</code></pre>")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
-    await input3.delete(True)
-    # Default credit message
-    credit = "️RAO SAHAB 🕊️⁪⁬⁮⁮⁮"
-    if raw_text3 == '1':
-        CR = 'RAO SAHAB 🕊️'
-    elif raw_text3:
-        CR = raw_text3
-    else:
+    await input3.delete(True)    
+    if raw_text3 == 'de':
         CR = credit
+    else:
+        CR = raw_text3
 
-    pw_token = f"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDI4NDE2NDAuNTQyLCJkYXRhIjp7Il9pZCI6IjY1OWZjZWU5YmI4YjFkMDAxOGFmYTExZCIsInVzZXJuYW1lIjoiODUzOTkyNjE5MCIsImZpcnN0TmFtZSI6IlNoaXR0dSIsImxhc3ROYW1lIjoiU2luZ2giLCJvcmdhbml6YXRpb24iOnsiX2lkIjoiNWViMzkzZWU5NWZhYjc0NjhhNzlkMTg5Iiwid2Vic2l0ZSI6InBoeXNpY3N3YWxsYWguY29tIiwibmFtZSI6IlBoeXNpY3N3YWxsYWgifSwiZW1haWwiOiJzaGl0dHVrdW1hcjM3QGdtYWlsLmNvbSIsInJvbGVzIjpbIjViMjdiZDk2NTg0MmY5NTBhNzc4YzZlZiJdLCJjb3VudHJ5R3JvdXAiOiJJTiIsInR5cGUiOiJVU0VSIn0sImlhdCI6MTc0MjIzNjg0MH0.oIubH2nR-onRJrzCAGcGU96tsmAzRYyXEnlaA4oIvcU"
     await editable.edit("<pre><code>**Enter Your PW Token For 𝐌𝐏𝐃 𝐔𝐑𝐋**</code></pre>\n<pre><code>Send  `0`  for use default</code></pre>")
     input4: Message = await bot.listen(editable.chat.id)
     raw_text4 = input4.text
@@ -456,7 +382,7 @@ async def txt_handler(bot: Client, m: Message):
     else:
         PW = raw_text4
         
-    await editable.edit("<pre><code>⚪Send ☞ `no` for **video** format</code></pre>\n<pre><code>🔘Send ☞ `No` for **Document** format</code></pre>")
+    await editable.edit("Now send the **Thumb url**\n**Eg :** ``\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -468,10 +394,6 @@ async def txt_handler(bot: Client, m: Message):
         thumb = "thumb.jpg"
     else:
         thumb == "no"
-
-    await m.reply_text(
-        f"<pre><code>**🎯Target Batch :** `{b_name}`</code></pre>"
-    )
 
     count =int(raw_text)    
     try:
