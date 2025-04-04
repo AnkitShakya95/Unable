@@ -36,6 +36,7 @@ async def show_random_emojis(message):
     return emoji_message
     
 my_name ="𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳" 
+owner_id = 7341059064
 # Initialize the bot
 bot = Client(
     "bot",
@@ -44,7 +45,38 @@ bot = Client(
     bot_token=BOT_TOKEN
 )
 
-# Define aiohttp routes
+cookies_file_path = os.getenv("COOKIES_FILE_PATH", "youtube_cookies.txt")
+
+# Global variables
+my_name = "𝐀𝐍𝐊𝐈𝐓❤️"
+
+auth_users = [1226915008,7341059064]
+
+# Command to authorize a user
+@bot.on_message(filters.command("auth") & filters.private)
+async def authorize_user(client, message):
+    if message.from_user.id == owner_id:  # Ensure only the owner can authorize
+        try:
+            user_id = int(message.text.split()[1])
+            if user_id not in auth_users:
+                auth_users.append(user_id)
+                await message.reply("User authorized successfully.")
+            else:
+                await message.reply("User is already authorized.")
+        except (IndexError, ValueError):
+            await message.reply("Please provide a valid user ID.")
+    else:
+        await message.reply("You are not authorized to use this command.")
+
+# Function to check authorization
+async def is_auth(user_id):
+    return user_id in auth_users or user_id == owner_id
+
+
+@bot.on_message(filters.command(["start"]) )
+async def account_login(bot: Client, m: Message):
+    editable = await m.reply_text(f"**Hi 👋.. How are you...?**\n**Bot Made BY 𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚™🇮🇳**")
+
 routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
@@ -131,7 +163,6 @@ Busy = InlineKeyboardMarkup(
     ]
 )
 
-cookies_file_path= "youtube_cookies.txt"
 
 @bot.on_message(filters.command("cookies") & filters.private)
 async def cookies_handler(client: Client, m: Message):
@@ -166,40 +197,6 @@ async def cookies_handler(client: Client, m: Message):
 
     except Exception as e:
         await m.reply_text(f"⚠️ An error occurred: {str(e)}")
-        
-# Start command handler
-@bot.on_message(filters.command(["start"]))
-async def start(client: Client, msg: Message):
-    user = await client.get_me()
-    mention = user.mention
-    start_message = await client.send_message(
-        msg.chat.id,
-        Data.START.format(msg.from_user.mention)
-    )
-
-    await asyncio.sleep(1)
-    await loading_message.edit_text(
-        "Loading features... ⏳\n\n"
-        "Progress: 🟥🟥⬜⬜⬜⬜⬜⬜ 25%\n\n"
-    )
-    
-    await asyncio.sleep(1)
-    await loading_message.edit_text(
-        "This may take a moment, sit back and relax! 😊\n\n"
-        "Progress: 🟧🟧🟧🟧⬜⬜⬜⬜ 50%\n\n"
-    )
-
-    await asyncio.sleep(1)
-    await loading_message.edit_text(
-        "Checking Bot Status... 🔍\n\n"
-        "Progress: 🟨🟨🟨🟨🟨🟨⬜⬜ 75%\n\n"
-    )
-
-    await asyncio.sleep(1)
-    await loading_message.edit_text(
-        "Checking status Ok... \n**ᴊᴏɪɴ ᴏᴜʀ <a href='https://t.me/AnkitShakya'>Bot Owner</a>**\n\n"
-        "Progress:🟩🟩🟩🟩🟩🟩🟩🟩🟩 100%\n\n"
-    )
         
 
 @bot.on_message(filters.command(["logs"]) )
@@ -448,8 +445,8 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:  
-                cc = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📝𝐓𝐢𝐭𝐥𝐞 » `{name1}` **[{res}]**.mp4\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » {CR}'
-                cc1 = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📝𝐓𝐢𝐭𝐥𝐞 » `{name1}` .pdf\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
+                cc = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📝 𝐓𝐢𝐭𝐥𝐞 » `{name1}` **[{res}]**.mp4\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » {CR}'
+                cc1 = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📁 𝐓𝐢𝐭𝐥𝐞 » `{name1}` .pdf\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
                 cczip = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📁𝐓𝐢𝐭𝐥𝐞 » `{name1}` .zip\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'  
                 ccimg = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n🖼️𝐓𝐢𝐭𝐥𝐞 » `{name1}` .jpg\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
                 cccpvod = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n🎞️𝐓𝐢𝐭𝐥𝐞 » `{name1}` .mp4\n\n<a href="{urlcpvod}">__**Click Here to Watch Stream**__</a>\n🔗𝐋𝐢𝐧𝐤 » {link0}\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
@@ -645,7 +642,7 @@ async def text_handler(bot: Client, m: Message):
     else:
         PW = raw_text4
         
-    await editable.edit("<pre><code>⚪Send ☞ `no` for **video** format</code></pre>\n<pre><code>🔘Send ☞ `No` for **Document** format</code></pre>")
+    await editable.edit("<pre><code>⚪Send Thumb Or ☞ `no` for **video** format</code></pre>\n<pre><code>🔘Send Thumb or ☞ `no` for **Document** format</code></pre>")
     input6 = message = await bot.listen(editable.chat.id, filters=filters.text & filters.user(m.from_user.id))
     raw_text6 = input6.text
     await input6.delete(True)
@@ -719,10 +716,10 @@ async def text_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:
-                cc = f'🎞️𝐓𝐢𝐭𝐥𝐞 » `{name}` [{res}].mp4\n🔗𝐋𝐢𝐧𝐤 » <a href="{link}">__**CLICK HERE**__</a>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `RAO SAHAB `'
-                cc1 = f'📕𝐓𝐢𝐭𝐥𝐞 » `{name}`\n🔗𝐋𝐢𝐧𝐤 » <a href="{link}">__**CLICK HERE**__</a>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `RAO SAHAB `'
-                ccyt = f'🎞️𝐓𝐢𝐭𝐥𝐞 » `{name}` .mp4\n🔗𝐋𝐢𝐧𝐤 » <a href="{link}">__**Click Here to Watch Stream**__</a>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `RAO SAHAB `'
-                cccpvod = f'🎞️𝐓𝐢𝐭𝐥𝐞 » `{name}` .mp4\n<a href="{linkcpvod}">__**Click Here to Watch Stream**__</a>\n🔗𝐋𝐢𝐧𝐤 » {link}\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `RAO SAHAB `'
+                cc = f'🎞️𝐓𝐢𝐭𝐥𝐞 » `{name}` [{res}].mp4\n🔗𝐋𝐢𝐧𝐤 » <a href="{link}">__**CLICK HERE**__</a>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR} `'
+                cc1 = f'📕𝐓𝐢𝐭𝐥𝐞 » `{name}`\n🔗𝐋𝐢𝐧𝐤 » <a href="{link}">__**CLICK HERE**__</a>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR} `'
+                ccyt = f'🎞️𝐓𝐢𝐭𝐥𝐞 » `{name}` .mp4\n🔗𝐋𝐢𝐧𝐤 » <a href="{link}">__**Click Here to Watch Stream**__</a>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR} `'
+                cccpvod = f'🎞️𝐓𝐢𝐭𝐥𝐞 » `{name}` .mp4\n<a href="{linkcpvod}">__**Click Here to Watch Stream**__</a>\n🔗𝐋𝐢𝐧𝐤 » {link}\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR} `'
                 
                 if "drive" in url:
                     try:
