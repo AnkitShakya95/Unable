@@ -26,5 +26,5 @@ Flask
 gunicorn
 pytube
 cloudscraper
-BeautifulSoup
+beautifulsoup4
 bs4
