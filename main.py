@@ -131,13 +131,6 @@ Busy = InlineKeyboardMarkup(
     ]
 )
 
-# Image URLs for the random image feature
-image_urls = [
-    "https://i.ibb.co/LtqjVy7/file-3958.jpg",
-    "https://tinypic.host/images/2025/02/07/DeWatermark.ai_1738952933236-1.png",
-    # Add more image URLs as needed
-]
-
 cookies_file_path= "youtube_cookies.txt"
 
 @bot.on_message(filters.command("cookies") & filters.private)
@@ -421,9 +414,10 @@ async def txt_handler(bot: Client, m: Message):
             elif 'videos.classplusapp' in url or "tencdn.classplusapp" in url or "webvideos.classplusapp.com" in url or "media-cdn-alisg.classplusapp.com" in url or "videos.classplusapp" in url or "videos.classplusapp.com" in url or "media-cdn-a.classplusapp" in url or "media-cdn.classplusapp" in url or "alisg-cdn-a.classplusapp" in url:
              url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJjb3Vyc2VJZCI6IjQ1NjY4NyIsInR1dG9ySWQiOm51bGwsIm9yZ0lkIjo0ODA2MTksImNhdGVnb3J5SWQiOm51bGx9r'}).json()['url']
                                         
-            elif "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
-             url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={PW}"
-
+            elif '/master.mpd' in url:
+             id =  url.split("/")[-2]
+             url = f"https://madxabhi-pw.onrender.com/{id}/master.m3u8?token={raw_text4}"
+                
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{name1[:60]}'
             
@@ -454,8 +448,8 @@ async def txt_handler(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:  
-                cc = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n🎞️𝐓𝐢𝐭𝐥𝐞 » `{name1}` **[{res}]**.mp4\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
-                cc1 = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📕𝐓𝐢𝐭𝐥𝐞 » `{name1}` .pdf\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
+                cc = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📝𝐓𝐢𝐭𝐥𝐞 » `{name1}` **[{res}]**.mp4\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » {CR}'
+                cc1 = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📝𝐓𝐢𝐭𝐥𝐞 » `{name1}` .pdf\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
                 cczip = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n📁𝐓𝐢𝐭𝐥𝐞 » `{name1}` .zip\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'  
                 ccimg = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n🖼️𝐓𝐢𝐭𝐥𝐞 » `{name1}` .jpg\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
                 cccpvod = f'<pre><quote>——— ✦  {str(count).zfill(3)} ✦ ———</quote></pre>\n\n🎞️𝐓𝐢𝐭𝐥𝐞 » `{name1}` .mp4\n\n<a href="{urlcpvod}">__**Click Here to Watch Stream**__</a>\n🔗𝐋𝐢𝐧𝐤 » {link0}\n\n<pre><code>📚 Course : {b_name}</code></pre>\n\n🌟𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐞𝐝 𝐁𝐲 » `{CR}`\n'
@@ -578,11 +572,11 @@ async def txt_handler(bot: Client, m: Message):
                     Show = f"<pre><code>**⚡𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐒𝐭𝐚𝐫𝐭𝐞𝐝...⏳**</code></pre>\n" \
                            f"<pre><code>🚀𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬 » {progress:.2f}%</code></pre>\n" \
                            f"<pre><code>🔗𝐈𝐧𝐝𝐞𝐱 » {str(count)}/{len(links)}</code></pre>\n" \
-                           f"<pre><code>🖇️𝐑𝐞𝐦𝐚𝐢𝐧𝐢𝐧𝐠 𝐋𝐢𝐧𝐤𝐬 » {remaining_links}</code></pre>\n" \
-                           f"📚𝐓𝐢𝐭𝐥𝐞 » `{name}`\n" \
+                           f"<pre><code>🔗𝐑𝐞𝐦𝐚𝐢𝐧𝐢𝐧𝐠 𝐋𝐢𝐧𝐤𝐬 » {remaining_links}</code></pre>\n" \
+                           f"📝𝐓𝐢𝐭𝐥𝐞 » `{name}`\n" \
                            f"<pre><code>🍁𝐐𝐮𝐚𝐥𝐢𝐭𝐲 » {raw_text2}p</code></pre>\n" \
                            f"🔗𝐋𝐢𝐧𝐤 » `{link0}`\n" \
-                           f"<pre><code>✦𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ `RAO SAHAB ✅🐦`</code></pre>"
+                           f"<pre><code>𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ 𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳</code></pre>"
                     prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
@@ -594,14 +588,14 @@ async def txt_handler(bot: Client, m: Message):
 
             except Exception as e:
                 await m.reply_text(
-                    f"<pre><code>⚠️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐞𝐫𝐮𝐩𝐭𝐞𝐝</code></pre>\n⚠️ 𝐓𝐢𝐭𝐥𝐞 » `{name}`\n\n🔗𝐋𝐢𝐧𝐤 » `{link0}`\n<pre><code>✦𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ `RAO SAHAB ✅🐦`</code></pre>"
+                    f"<pre><code>⚠️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐞𝐫𝐮𝐩𝐭𝐞𝐝</code></pre>\n⚠️ 𝐓𝐢𝐭𝐥𝐞 » `{name}`\n\n🔗𝐋𝐢𝐧𝐤 » `{link0}`\n<pre><code>✦𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ 𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳</code></pre>"
                 )
                 count += 1
                 continue
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("<pre><code>list index out of range</code></pre>\n<pre><code>Downloaded By ⌈✨『RAO SAHAB ✅ 』✨⌋</code></pre>")
+    await m.reply_text("<pre><code>Downloaded By ⌈✨『𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳 』✨⌋</code></pre>")
     
 @bot.on_message(filters.text & filters.private)
 async def text_handler(bot: Client, m: Message):
@@ -690,9 +684,10 @@ async def text_handler(bot: Client, m: Message):
             elif 'videos.classplusapp' in url or "tencdn.classplusapp" in url or "webvideos.classplusapp.com" in url or "media-cdn-alisg.classplusapp.com" in url or "videos.classplusapp" in url or "videos.classplusapp.com" in url or "media-cdn-a.classplusapp" in url or "media-cdn.classplusapp" in url:
              url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgzNjkyMTIsIm9yZ0lkIjoyNjA1LCJ0eXBlIjoxLCJtb2JpbGUiOiI5MTcwODI3NzQyODkiLCJuYW1lIjoiQWNlIiwiZW1haWwiOm51bGwsImlzRmlyc3RMb2dpbiI6dHJ1ZSwiZGVmYXVsdExhbmd1YWdlIjpudWxsLCJjb3VudHJ5Q29kZSI6IklOIiwiaXNJbnRlcm5hdGlvbmFsIjowLCJpYXQiOjE2NDMyODE4NzcsImV4cCI6MTY0Mzg4NjY3N30.hM33P2ai6ivdzxPPfm01LAd4JWv-vnrSxGXqvCirCSpUfhhofpeqyeHPxtstXwe0'}).json()['url']
                             
-            elif "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
-             url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={PW}"
-
+            elif '/master.mpd' in url:
+             id =  url.split("/")[-2]
+             url = f"https://madxabhi-pw.onrender.com/{id}/master.m3u8?token={raw_text4}"
+                
             name1 = links.replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{name1[:20]}'
             
@@ -869,7 +864,7 @@ async def text_handler(bot: Client, m: Message):
                                 
                 else:
                     emoji_message = await show_random_emojis(message)
-                    Show = f"<pre><code>**⚡Dᴏᴡɴʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ...⏳**</code></pre>\n🔗𝐋𝐢𝐧𝐤 » `{link}`\n<pre><code>✦𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ `MR BRIJESH 🐦`</code></pre>"
+                    Show = f"<pre><code>**⚡Dᴏᴡɴʟᴏᴀᴅ Sᴛᴀʀᴛᴇᴅ...⏳**</code></pre>\n🔗𝐋𝐢𝐧𝐤 » `{link}`\n<pre><code>𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ 𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳</code></pre>"
                     prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
@@ -880,8 +875,8 @@ async def text_handler(bot: Client, m: Message):
                     time.sleep(1)
 
             except Exception as e:
-                    Error= f"<pre><code>⚠️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐞𝐫𝐮𝐩𝐭𝐞𝐝</code></pre>\n⚠️ 𝐓𝐢𝐭𝐥𝐞 » `{name}`\n\n🔗𝐋𝐢𝐧𝐤 » `{link}`\n<pre><code>✦𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ `MR BRIJESH 🐦`</code></pre>"
-                    await m.reply_text(Error)
+                    Error= f"<pre><code>⚠️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐞𝐫𝐮𝐩𝐭𝐞𝐝</code></pre>\n⚠️ 𝐓𝐢𝐭𝐥𝐞 » `{name}`\n\n🔗𝐋𝐢𝐧𝐤 » `{link}`\n<pre><code>𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲 ✦ 𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳 </code></pre>"
+                    await m.reply_text(e)
                     count += 1
                     pass
 
