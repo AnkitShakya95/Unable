@@ -211,7 +211,7 @@ async def send_logs(bot: Client, m: Message):
 
 @bot.on_message(filters.command(["stop"]) )
 async def restart_handler(_, m):
-    await m.reply_text("🚦sᴛᴏᴘ🚦", True)
+    await m.reply_text("🚦**STOPPED**🚦", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 @bot.on_message(filters.command(["y2t"]))
@@ -295,7 +295,11 @@ async def youtube_to_txt(client, message: Message):
 
 @bot.on_message(filters.command(["alone"]) )
 async def txt_handler(bot: Client, m: Message):
-    editable = await m.reply_text(f"<pre><code>**🔹Hi I am Poweful TXT Downloader📥 Bot.**</code></pre>\n<pre><code>🔹**Send me the TXT file and wait.**</code></pre>")
+    user_id = m.from_user.id
+    if user_id not in auth_users:
+        await m.reply_text("**HEY BUDDY THIS IS ONLY FOR MY ADMINS  **")
+    else:
+        editable = await m.reply_text(f"<pre><code>**🔹Hi I am Poweful TXT Downloader📥 Bot.**</code></pre>\n<pre><code>🔹**Send me the TXT file and wait.**</code></pre>")
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
