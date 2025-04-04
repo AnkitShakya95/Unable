@@ -31,7 +31,7 @@ photologo = 'https://tinypic.host/images/2025/02/07/DeWatermark.ai_1738952933236
 photoyt = 'https://tinypic.host/images/2025/03/18/YouTube-Logo.wine.png'
 
 async def show_random_emojis(message):
-    emojis = ['🐼', '🐶', '🐅', '⚡️', '🚀', '🌟', '🔥', '✨']
+    emojis = ['🥰', '😇', '💯', '⚡️', '🚀', '🌟', '🔥', '✨']
     emoji_message = await message.reply_text(' '.join(random.choices(emojis, k=1)))
     return emoji_message
     
@@ -214,7 +214,7 @@ async def send_logs(bot: Client, m: Message):
 
 @bot.on_message(filters.command(["stop"]) )
 async def restart_handler(_, m):
-    await m.reply_text("🦅ˢᵗᵒᵖᵖᵉᵈ ᵇᵃᵇʸ💞", True)
+    await m.reply_text("🚦sᴛᴏᴘ🚦", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 @bot.on_message(filters.command(["y2t"]))
@@ -303,7 +303,7 @@ async def txt_handler(bot: Client, m: Message):
     x = await input.download()
     await input.delete(True)
     file_name, ext = os.path.splitext(os.path.basename(x))
-    credit = f"RAO SAHAB"
+    credit = f"𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳"
     try:    
         with open(x, "r") as f:
             content = f.read()
@@ -325,16 +325,16 @@ async def txt_handler(bot: Client, m: Message):
         arg = int(raw_text)
     except:
         arg = 1
-    await editable.edit("<pre><code>**Enter Your Batch Name**</code></pre>\n<pre><code>Send `1` for use default.</code></pre>")
+    await editable.edit("<pre><code>**Enter Your Batch Name**</code></pre>\n<pre><code>Send `d` for use default.</code></pre>")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    if raw_text0 == '1':
+    if raw_text0 == 'd':
         b_name = file_name
     else:
         b_name = raw_text0
 
-    await editable.edit("<pre><code>╭━━━━❰ᴇɴᴛᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴ❱━━➣ </code></pre>\n┣━━⪼ send `144`  for 144p\n┣━━⪼ send `240`  for 240p\n┣━━⪼ send `360`  for 360p\n┣━━⪼ send `480`  for 480p\n┣━━⪼ send `720`  for 720p\n┣━━⪼ send `1080` for 1080p\n<pre><code>╰━━⌈⚡[`🦋RAO SAHAB 🦋`]⚡⌋━━➣ </code></pre>")
+    await editable.edit("<pre><code>╭━━━━❰ᴇɴᴛᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴ❱━━➣ </code></pre>\n┣━━⪼ send `144`  for 144p\n┣━━⪼ send `240`  for 240p\n┣━━⪼ send `360`  for 360p\n┣━━⪼ send `480`  for 480p\n┣━━⪼ send `720`  for 720p\n┣━━⪼ send `1080` for 1080p\n<pre><code>╰━━⌈⚡[`𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳`]⚡⌋━━➣ </code></pre>")
     input2: Message = await bot.listen(editable.chat.id)
     raw_text2 = input2.text
     quality = input2.text
@@ -375,7 +375,7 @@ async def txt_handler(bot: Client, m: Message):
     else:
         PW = raw_text4
         
-    await editable.edit("Now send the **Thumb url**\n**Eg :** ``\n\nor Send `no`")
+    await editable.edit("<pre><code>Now send the **Thumb url**\n**Eg :** ``\n\nor Send `no`</code></pre>")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -612,7 +612,7 @@ async def text_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"<pre><code>**🔹Processing your link...\n🔁Please wait...⏳**</code></pre>")
     await m.delete()
 
-    await editable.edit("<pre><code>╭━━━━❰ᴇɴᴛᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴ❱━━➣ </code></pre>\n┣━━⪼ send `144`  for 144p\n┣━━⪼ send `240`  for 240p\n┣━━⪼ send `360`  for 360p\n┣━━⪼ send `480`  for 480p\n┣━━⪼ send `720`  for 720p\n┣━━⪼ send `1080` for 1080p\n<pre><code>╰━━⌈⚡[`🦋 RAO SAHAB ✅ 🦋`]⚡⌋━━➣ </code></pre>")
+    await editable.edit("<pre><code>╭━━━━❰ᴇɴᴛᴇʀ ʀᴇꜱᴏʟᴜᴛɪᴏɴ❱━━➣ </code></pre>\n┣━━⪼ send `144`  for 144p\n┣━━⪼ send `240`  for 240p\n┣━━⪼ send `360`  for 360p\n┣━━⪼ send `480`  for 480p\n┣━━⪼ send `720`  for 720p\n┣━━⪼ send `1080` for 1080p\n<pre><code>╰━━⌈⚡[`𝐀𝐧𝐤𝐢𝐭 𝐒𝐡𝐚𝐤𝐲𝐚🇮🇳`]⚡⌋━━➣ </code></pre>")
     input2: Message = await bot.listen(editable.chat.id, filters=filters.text & filters.user(m.from_user.id))
     raw_text2 = input2.text
     quality = input2.text
